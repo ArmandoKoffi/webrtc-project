@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Communication</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>WebRTC Communication</h1>
+        
+        <div class="room-controls">
+            <input type="text" id="roomId" placeholder="Entrez un ID de salle">
+            <button id="joinBtn">Rejoindre</button>
+            <button id="createBtn">Créer une salle</button>
+        </div>
+        
+        <div class="video-container">
+            <video id="localVideo" autoplay muted playsinline></video>
+            <video id="remoteVideo" autoplay playsinline></video>
+        </div>
+        
+        <div class="controls">
+            <button id="startBtn">Démarrer l'appel</button>
+            <button id="hangupBtn" disabled>Terminer l'appel</button>
+            <button id="screenShareBtn">Partager l'écran</button>
+            <button id="fileBtn">Envoyer un fichier</button>
+            <label for="fileInputVisible" style="display:none;">Sélectionner un fichier à envoyer</label>
+            <input type="file" id="fileInputVisible" title="Sélectionner un fichier à envoyer" style="display:inline;">
+            <button id="toggleVideoBtn">Désactiver caméra</button>
+            <button id="toggleAudioBtn">Désactiver micro</button>
+            <label for="fileInputHidden" style="display:none;">Sélectionner un fichier à envoyer (caché)</label>
+            <input type="file" id="fileInputHidden" title="Sélectionner un fichier à envoyer" style="display: none;">
+        </div>
+        
+        <div class="messages">
+            <h3>Messages:</h3>
+            <div id="messages"></div>
+        </div>
+
+        <div class="chat-input">
+          <input type="text" id="messageInput" placeholder="Écrivez votre message...">
+          <button id="sendMessageBtn">Envoyer</button>
+        </div>
+        
+        <div class="status">
+            <p id="status">En attente de connexion...</p>
+        </div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
