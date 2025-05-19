@@ -13,7 +13,12 @@ const server = app.listen(PORT, () => {
 });
 
 // Configurer Socket.io
-const io = socketio(server);
+const io = socketio(server, {
+  cors: {
+    origin: "*", // À remplacer par ton domaine en production
+    methods: ["GET", "POST"],
+  },
+});
 
 // Gestion des connexions Socket.io
 io.on('connection', (socket) => {
